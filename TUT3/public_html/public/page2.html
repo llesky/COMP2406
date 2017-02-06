@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutorial 3</title>
+	<link rel="stylesheet" type="text/css" href="common.css">
+</head>
+<body>
+
+	<div id="container">
+		<div class="header">
+			<h1>You've discovered the second page...</h1>
+		</div>
+
+		<div class="navigation">
+			<nav>
+			Navigation!
+			<ul>
+				<li><a href="main.html" class="class1">Main</a></li>
+				<li><a href="page2.html" class="class2">Page 2</a></li>
+				<li><a href="page3.html" class="class3">Page 3</a></li>
+			</ul>
+			</nav>
+		</div>
+
+		<div class="body">
+			<h2>Some info on Page 2</h2>
+			<p>You really don't want to be here. <a href="main.html">Start over</a>.</p>.
+			<p>
+			<button onclick="buttonClicked()">Click here to change my name!</button>
+			<button onclick="randomColor()">Restyle me!</button>
+			</p>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	function buttonClicked() {
+		var name = prompt("Enter your name", "Khalil");
+		document.title = name + "'s webpage!";
+	}
+	function randomColor() {
+		var color = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+		document.getElementsByTagName('H1')[0].style.color = color;
+	}
+
+</script>
+
+</html>

@@ -1,0 +1,80 @@
+
+ #divMain { width: 100%; }
+
+A.class1 {color:white;}
+A.class1:link  {text-decoration: none; color: white;}
+A.class1:visited {text-decoration: none; color: white;}
+A.class1:hover {text-decoration: underline; color: red;}
+A.class1:active {text-decoration: none; color: white;}
+
+A.class2 {color:white;}
+A.class2:link  {text-decoration: none; color: white;}
+A.class2:visited {text-decoration: none; color: white;}
+A.class2:hover {text-decoration: underline; color: orange;}
+A.class2:active {text-decoration: none; color: white;}
+
+A.class3 {color:white;}
+A.class3:link  {text-decoration: none; color: white;}
+A.class3:visited {text-decoration: none; color: white;}
+A.class3:hover {text-decoration: underline; color: yellow;}
+A.class3:active {text-decoration: none; color: white;}
+
+A.class4 {color:green;}
+A.class4:link  {text-decoration: none; color: green;}
+A.class4:visited {text-decoration: none; color: green;}
+A.class4:hover {text-decoration: underline; color: white;}
+A.class4:active {text-decoration: none; color: green;}
+
+
+h1:hover {
+    font-family: courier, arial;
+}
+
+body {
+	background-image: url("background.jpg");
+    font-family: tahoma, arial;
+
+}
+
+.header {
+    color: navy;
+    text-align: center;
+    font-family: tahoma, arial;
+    font-style: italic;
+}
+
+.navigation {
+	float: left;
+    background-color: #339966;
+    border: 5px solid #071d42;
+    width: 150px;
+    margin: 20px
+    
+}
+
+.navigation nav {
+    margin: 20px;
+    padding: 0;
+}
+
+.navigation ul {
+    list-style-type: none;
+    color: green;
+}
+
+.body {
+	float: left;
+	background-color: #80aaff;
+	border: 10px solid #001351;
+	width: 400px;
+	margin: 20px;
+}
+
+.body h2{
+    margin: 20px;
+}
+
+.body p{
+    margin: 20px;
+}
+
