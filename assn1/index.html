@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Superhero Index</title>
+	</head>
+	<body>
+		<h1>Index</h1>
+		<select id="selector">
+		</select>
+		<button onclick="reqFileData()">
+			View
+		</button>
+		<div id="information" style="border:3px solid black">
+			<input id="name_field" type="text" readonly>
+			<input id="alterego_field" type="text" readonly>
+			<input id="jurisdiction_field" type="text" readonly>
+			<textarea id="powers_field" readonly></textarea>
+		</div>
+	</div>
+	</body>
+
+	<script type="text/javascript">
+
+		function reqFileData() {
+
+			var s = document.getElementById("selector");
+			var filename = (s.options[s.selectedIndex].value)
+							.replace(/ /g, '_') + ".json";
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var result = JSON.parse(xhttp.responseText);
+					document.getElementById("name_field").value = result.name;
+					document.getElementById("alterego_field").value = result.alterEgo;
+					document.getElementById("jurisdiction_field").value = result.jurisdiction;
+					document.getElementById("powers_field").value = result.superpowers.join("\n");
+
+
+					//apply style div
+					var styledDiv = document.getElementById("information").style;
+
+					styledDiv.backgroundColor = "black";
+					styledDiv.borderColor = "black";
+					styledDiv.color = "black";
+
+					styledDiv.backgroundColor = result.style.backgroundColor;
+					styledDiv.borderColor = result.style.borderColor;
+					styledDiv.color = result.style.color;
+				}
+			};
+			xhttp.open("GET", "/hero?name=" + filename, true);
+			xhttp.send();
+		}
+		function reqFileList() {
+			var selector = document.getElementById("selector");
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var result = JSON.parse(xhttp.responseText);
+					for (var i = 0 ; i < result.length; i++){
+						var option = document.createElement("option");
+						option.text = result[i].replace(/_/g, ' ').substring(0, result[i].length-5);
+						selector.add(option);
+					}
+				}
+			};
+			xhttp.open("GET", "/allheroes", true);
+			xhttp.send();
+		}
+		window.onload = reqFileList;
+    </script>
+
+</html>
