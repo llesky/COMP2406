@@ -2,21 +2,39 @@
 <html>
 	<head>
 		<title>Superhero Index</title>
+		<link rel="stylesheet" type="text/css" href="common.css">
 	</head>
 	<body>
-		<h1>Index</h1>
-		<select id="selector">
-		</select>
-		<button onclick="reqFileData()">
-			View
-		</button>
-		<div id="information" style="border:3px solid black">
-			<input id="name_field" type="text" readonly>
-			<input id="alterego_field" type="text" readonly>
-			<input id="jurisdiction_field" type="text" readonly>
-			<textarea id="powers_field" readonly></textarea>
-		</div>
+
+	<div id="header">
+		<h1>Hero Selector</h1>
+		<label>Select a hero:</label>
+		<select id="selector"></select>
+		<button onclick="reqFileData()">View</button>
 	</div>
+		
+	<div id="information" style="background:white;border:5px solid black;padding:10px;width:400px;margin:10px;">
+
+		<table cellpadding="10">
+			<tr>
+				<th style="text-align: right"><label>Name</label></th>
+				<th style="text-align: left"><input id="name_field" type="text" readonly></th>
+			</tr>
+			<tr>
+				<th style="text-align: right"><label>Alter Ego</label></th>
+				<th style="text-align: left"><input id="alterego_field" type="text" readonly></th>
+			</tr>
+			<tr>
+				<th style="text-align: right"><label>Jurisdiction</label></th>
+				<th style="text-align: left"><input id="jurisdiction_field" type="text" readonly></th>
+			</tr>
+			<tr>
+				<th style="text-align: right"><label>Superpowers</label></th>
+				<th style="text-align: left"><textarea style="height:100px" id="powers_field" readonly></textarea></th>
+			</tr>
+		</table>
+	</div>
+
 	</body>
 
 	<script type="text/javascript">
@@ -39,6 +57,7 @@
 					//apply style div
 					var styledDiv = document.getElementById("information").style;
 
+					styledDiv.background = "white";
 					styledDiv.backgroundColor = "black";
 					styledDiv.borderColor = "black";
 					styledDiv.color = "black";

@@ -1,0 +1,11 @@
+
+button {
+	background-color:#abd6d2;
+	font-size: 18px;
+}
+
+body {
+	margin: 40px;
+	background-image: url("background.jpg");
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
