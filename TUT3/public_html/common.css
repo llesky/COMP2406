@@ -31,7 +31,7 @@ h1:hover {
 }
 
 body {
-	background-image: url("background.jpg");
+	background-image: url("../public_images/background.jpg");
     font-family: tahoma, arial;
 
 }
