@@ -25,6 +25,12 @@ A.class4:visited {text-decoration: none; color: green;}
 A.class4:hover {text-decoration: underline; color: white;}
 A.class4:active {text-decoration: none; color: green;}
 
+A.class5 {color:white;}
+A.class5:link  {text-decoration: none; color: white;}
+A.class5:visited {text-decoration: none; color: white;}
+A.class5:hover {text-decoration: underline; color: blue;}
+A.class5:active {text-decoration: none; color: white;}
+
 
 h1:hover {
     font-family: courier, arial;

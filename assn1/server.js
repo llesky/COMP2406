@@ -3,6 +3,7 @@
 /** Load Modules **/
 
 var http = require('http');
+var url = require('url');
 var fs = require('fs');
 var mime = require('mime-types');
 
@@ -21,6 +22,8 @@ function handleRequest(req, res) {
 	var code=500;
 	var data = "";
 
+	var query = url.parse(req.url, true).query;
+
 	if (req.url == "/allheroes"){
 		var heroes = fs.readdirSync('./heroes');
 		res.writeHead(200, {'content-Type': 'application/json'});
@@ -30,7 +33,8 @@ function handleRequest(req, res) {
 	}
 
 	if (req.url.startsWith('/hero')){
-		var heroname = req.url.split("=")[1];
+		var heroname = query.name;
+		console.log(query)
 		if(fs.existsSync("./heroes/" + heroname)){
 			data = fs.readFileSync("./heroes/" + heroname);
 			code = 200;

@@ -18,6 +18,7 @@
 				<li><a href="main.html" class="class1">Main</a></li>
 				<li><a href="page2.html" class="class2">Page 2</a></li>
 				<li><a href="page3.html" class="class3">Page 3</a></li>
+				<li><a href="tut5.html" class="class5">Tutorial 5</a></li>
 			</ul>
 			</nav>
 		</div>
@@ -25,8 +26,26 @@
 		<div class="body">
 			<h2>Some info on the Main Page</h2>
 			<p>Not a lot happens on on the main page, its really just the default page shown to the user. Also, an <a href="/public_images/image.jpg" class="class4">image</a>.
+			</br>
+			<input type="widget" id="widgetName" value="Enter a widget name..."></input>
+			<button onclick="buttonClicked()">Request</button>
+			</p>
 		</div>
 	</div>
-
 </body>
+
+<script>
+	function buttonClicked() {
+		var selector = document.getElementById("widgetName");
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if (this.readyState == 4 && this.status == 200) {
+				//alert(xhttp.responseText);
+			}
+		};
+		xhttp.open("GET", "/widgets/description?widgetName=" + selector.value, true);
+		xhttp.send();
+	}
+</script>
+
 </html>
