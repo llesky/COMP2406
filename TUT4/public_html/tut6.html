@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutorial 5</title>
+	<script src="../colorShift.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="common.css">
+</head>
+<body>
+
+	<div id="container">
+		<div class="header">
+			<h1>Tutorial 5</h1>
+		</div>
+
+		<div class="navigation">
+			<nav>
+			Navigation!
+			<ul>
+				<li><a href="main.html" class="class1">Main</a></li>
+				<li><a href="page2.html" class="class2">Page 2</a></li>
+				<li><a href="page3.html" class="class3">Page 3</a></li>
+				<li><a href="tut5.html" class="class5">Tutorial 5</a></li>
+			</ul>
+			</nav>
+		</div>
+
+		<div class="body">
+			<p>Body for Tutorial 5. Please enter your name and your favorite color, and we'll store it for later. We will also change the background for you!</p>
+			<p>
+			<label>USERNAME:</label>
+			<input type="text" name="textInput" id="textInput">
+			</br>
+			<label>COLOR:</label>
+			<input type="color" name="colorInput" id="colorInput">
+			</p>
+			<p><button onclick="submit()">SUBMIT</button></p>
+		</div>
+	</div>
+
+</body>
+
+<script>
+
+	var colorTarget = "#000000";
+	var colorStart = "#009933";
+	var colorCurrent = colorStart;
+
+	var cycleRandom = true;
+
+	window.setInterval(timer1, 40);
+
+	function timer1() {
+
+		var newColor = colorLib.shiftColor(colorCurrent, colorTarget);
+		if (newColor == false){
+			if (cycleRandom){
+				colorTarget = colorLib.randomHex();
+			}else{
+				colorTarget = colorStart;
+			}
+		}else{
+			colorCurrent = newColor;
+		}
+		
+		document.body.style.background = newColor;
+		
+	}
+
+	function submit(){
+
+		var favColor = document.getElementById("colorInput").value;
+		var name = document.getElementById("textInput").value;
+
+		if (name.length == 0){
+			alert("ENTER A NAME!");
+			return;
+		}
+
+		colorStart = favColor;
+		cycleRandom = false;
+
+		var data = { username : name, favoriteColor : favColor};
+		var obj = JSON.stringify(data);
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				alert(xhttp.responseText);
+			}
+		};
+		xhttp.open("POST", "/userStyle", true);
+		xhttp.setRequestHeader("content-type", "application/json");
+		xhttp.send(obj);
+	}
+</script>
+
+</html>
